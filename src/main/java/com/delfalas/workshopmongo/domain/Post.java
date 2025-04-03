@@ -1,12 +1,15 @@
 package com.delfalas.workshopmongo.domain;
  
  import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.delfalas.workshopmongo.dto.AuthorDTO;
+import com.delfalas.workshopmongo.dto.CommentDTO;
  
  @Document
  public class Post implements Serializable {
@@ -18,6 +21,8 @@ import com.delfalas.workshopmongo.dto.AuthorDTO;
  	private String title;
  	private String body;
  	private AuthorDTO author;
+ 	
+ 	private List<CommentDTO> comments = new ArrayList<>();
  	
  	public Post() {
  	}
@@ -70,6 +75,14 @@ import com.delfalas.workshopmongo.dto.AuthorDTO;
  	public void setAuthor(AuthorDTO author) {
  		this.author = author;
  	}
+ 	
+ 	public List<CommentDTO> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<CommentDTO> comments) {
+		this.comments = comments;
+	}
  
  	@Override
  	public int hashCode() {
@@ -95,4 +108,5 @@ import com.delfalas.workshopmongo.dto.AuthorDTO;
  			return false;
  		return true;
  	}
+
  }
